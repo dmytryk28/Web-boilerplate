@@ -1,0 +1,194 @@
+.popup > .teacher-info-popup {
+  display: flex;
+  flex-direction: column;
+  width: 900px;
+  background-color: white;
+  overflow: hidden;
+}
+
+.teacher-info {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  padding-top: 1rem;
+}
+
+.popup .teacher-image {
+  flex: 1;
+}
+
+.popup .teacher-image img {
+  width: 100%;
+  height: auto;
+}
+
+.main-teacher-info {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.short-info {
+  flex: 2;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 3rem;
+}
+
+.short-info h1 {
+  color: black;
+}
+
+.short-info h1::after {
+  content: '★';
+  color: #ecec02;
+  position: absolute;
+  font-size: 4rem;
+  font-weight: bolder;
+  top: 0;
+  right: 0;
+  transform: translateY(-20%);
+}
+
+.short-info h2 {
+  font-size: 1.3rem;
+  margin-bottom: 0.3rem;
+  margin-top: 1.3rem;
+}
+
+.short-info p {
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+.teacher-email,
+.map-toggle {
+  color: darkcyan;
+  cursor: pointer;
+}
+
+.popup .teacher-info > p {
+  margin-top: 1.5rem;
+  text-align: left;
+}
+
+.map-toggle {
+  margin-top: 1.5rem;
+  text-align: left;
+}
+
+.map-toggle span {
+  position: relative;
+  color: darkcyan;
+  cursor: pointer;
+}
+
+.map-toggle span::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 2px;
+  width: 100%;
+  background-image: linear-gradient(to right, darkcyan 50%, rgba(255, 255, 255, 0) 0%);
+  background-size: 10px 2px;
+  background-repeat: repeat-x;
+}
+
+#teacher-info-h1, #info-close-btn {
+  font-size: 20pt;
+}
+
+@media (max-width: 1080px) {
+  .popup > .teacher-info-popup {
+    width: 600px;
+  }
+
+  .short-info {
+    padding-left: 1.5rem;
+  }
+
+  .popup .teacher-image {
+    flex: 2;
+  }
+
+  .short-info h1 {
+    font-size: 1.3rem;
+  }
+
+  .short-info h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+    margin-top: 1rem;
+  }
+
+  .short-info p {
+    font-size: 1rem;
+    margin-top: 0.8rem;
+  }
+
+  .short-info h1::after {
+    font-size: 3rem;
+    transform: translateY(-30%);
+  }
+}
+
+@media (max-width: 720px) {
+  .popup .teacher-info > p,
+  .map-toggle {
+    margin-top: 1rem;
+  }
+
+  .description,
+  .map-toggle span {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .teacher-info {
+    padding: 1rem;
+  }
+
+  .short-info h1 {
+    font-size: 1.1rem;
+  }
+
+  .short-info h2 {
+    font-size: 0.9rem;
+    margin-bottom: 0;
+    margin-top: 0.5rem;
+  }
+
+  .short-info p {
+    font-size: 0.7rem;
+    margin-top: 0.4rem;
+  }
+
+  .short-info h1::after {
+    font-size: 2rem;
+    transform: translateY(-27%);
+  }
+
+  .popup > .teacher-info-popup {
+    width: 350px;
+  }
+
+  .popup .teacher-info > p,
+  .map-toggle {
+    margin-top: 0.5rem;
+  }
+
+  .description,
+  .map-toggle {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+  }
+
+  .map-toggle span {
+    font-size: 0.8rem;
+  }
+}

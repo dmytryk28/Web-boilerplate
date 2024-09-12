@@ -1,0 +1,55 @@
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: var(--section-margin);
+}
+
+.navigation ul {
+  display: flex;
+  gap: 1.5rem;
+  margin-right: 1.5rem;
+  font-size: 1.6rem;
+}
+
+.navigation ul li a {
+  text-decoration: none;
+  color: var(--orange);
+}
+
+.navigation ul li a:hover {
+  color: #983827;
+}
+
+.navigation button {
+  font-size: 1.6rem;
+}
+
+@media (max-width: 910px) {
+  .navigation {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .main-btn.add-teacher {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .navigation ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem 1rem;
+    margin-right: 0;
+  }
+
+  .navigation ul li a {
+    font-size: 1.2rem;
+  }
+
+  .main-btn.add-teacher {
+    font-size: 1.2rem;
+    padding: 1rem;
+  }
+}

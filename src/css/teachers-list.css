@@ -1,0 +1,96 @@
+/* Filter of list */
+.filters {
+  display: flex;
+  align-items: center;
+  color: #797982;
+  font-size: 1.2rem;
+  margin-bottom: var(--section-margin);
+}
+
+.filters label {
+  margin-right: 1rem;
+}
+
+.filters label:hover {
+  color: darkgray;
+  cursor: pointer;
+}
+
+.filters select {
+  background-color: white;
+  border: 1px solid grey;
+  font-size: inherit;
+  padding: 0.5rem;
+}
+
+.search-option {
+  display: flex;
+  align-items: center;
+}
+
+.separator {
+  position: relative;
+  width: 1px;
+  height: 3rem;
+  margin: 0 1rem;
+}
+
+.separator::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 2px;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      lightgray,
+      lightgray 2px,
+      transparent 4px,
+      transparent 6px
+    );
+}
+
+/* Teacher list styles */
+.all-teachers {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  row-gap: 2rem;
+  padding: 2rem 2rem 0 2rem;
+  margin-bottom: 1rem;
+}
+
+
+@media (max-width: 1600px) {
+  .all-teachers {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 1440px) {
+  .filters {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 1275px) {
+  .all-teachers {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 1000px) {
+  .all-teachers {
+    grid-template-columns: repeat(2, 1fr);
+    padding-top: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .all-teachers {
+    grid-template-columns: 1fr;
+  }
+}

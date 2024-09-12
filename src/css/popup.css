@@ -1,0 +1,49 @@
+.popup {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  visibility: hidden;
+  opacity: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup.visible {
+  visibility: visible;
+  opacity: 1;
+  backdrop-filter: blur(4px);
+}
+
+.popup > div {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  background-color: white;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.popup header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  background-color: #464648;
+  padding: 1rem;
+}
+
+.close-popup-btn {
+  color: white;
+  font-size: 2rem;
+  background: none;
+  border: none;
+}
+
+#add-teacher-h1, #add-close-btn {
+  font-size: 20pt;
+}
