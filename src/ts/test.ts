@@ -39,7 +39,6 @@ console.log(`Users were sorted\n`);
 
 
 const searchParam = '30-40';
-
 const searchResult = findUsers(validatedUsers, searchParam);
 toJSON(searchResult, './../results/foundUsers.json');
 console.log(`Users found: ${searchResult.length}\n`);
