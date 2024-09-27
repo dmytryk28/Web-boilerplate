@@ -1,8 +1,9 @@
 export interface FilterParams {
-    country?: string;
-    age?: number;
+    region?: string;
+    age?: number | string;
     gender?: Gender;
     favorite?: boolean;
+    withPhoto?: boolean;
 }
 
 export interface UserFormatted {

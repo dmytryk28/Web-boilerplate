@@ -1,50 +1,62 @@
 const testModules = require('./test-module');
 require('../css/app.css');
 
+/** ******** Your code here! *********** */
+
 console.log(testModules.hello);
 
-const addTeacherBtn = document.querySelectorAll('.add-teacher');
-const addTeacherPopup = document.getElementById('add-teacher');
-const addTeacherCloseBtn = document.getElementById('add-close-btn')
-const infoCloseBtn = document.getElementById('info-close-btn')
 const scrollContainer = document.querySelector('.scroll');
 const leftBtn = document.querySelector('.scroll-btn.left');
 const rightBtn = document.querySelector('.scroll-btn.right');
-const teachersImages = document.querySelectorAll('.teacher-image')
-const teacherInfoPopup = document.getElementById('teacher-info');
 
+const addTeacherBtn = document.querySelectorAll('.add-teacher');
+const addTeacherPopup = document.querySelector('#add-teacher');
+const addTeacherCloseBtn = document.querySelector('#add-close-btn');
+const teacherInfoCloseBtn = document.querySelector('#info-close-btn');
 
-addTeacherBtn.forEach(btn =>
-    btn.addEventListener('click', () => {
-    addTeacherPopup.classList.add('visible');
-}));
-
-teachersImages.forEach(teacher =>
-    teacher.addEventListener('click', () => {
-    teacherInfoPopup.classList.add('visible');
-}));
-
-addTeacherCloseBtn.addEventListener('click', () => {
-    addTeacherPopup.classList.remove('visible');
-});
-
-infoCloseBtn.addEventListener('click', () => {
-    teacherInfoPopup.classList.remove('visible');
-});
-
-function scrollCards(scrollLeft) {
-    scrollContainer.scrollBy({
-        left: scrollLeft,
-        behavior: 'smooth'
-    });
-}
+const teachersImages = document.querySelectorAll('.teacher-image');
+const teacherInfoPopup = document.querySelector('#teacher-info');
 
 leftBtn.addEventListener('click', () => {
-    if (window.innerWidth > 600) scrollCards(-200);
-    else scrollCards(-282);
+  if (window.innerWidth > 600) {
+    scrollContainer.scrollBy({
+      left: -200,
+      behavior: 'smooth',
+    });
+  } else {
+    scrollContainer.scrollBy({
+      left: -282,
+      behavior: 'smooth',
+    });
+  }
 });
 
 rightBtn.addEventListener('click', () => {
-    if (window.innerWidth > 600) scrollCards(200);
-    else scrollCards(282);
+  if (window.innerWidth > 600) {
+    scrollContainer.scrollBy({
+      left: 200,
+      behavior: 'smooth',
+    });
+  } else {
+    scrollContainer.scrollBy({
+      left: 282,
+      behavior: 'smooth',
+    });
+  }
+});
+
+addTeacherBtn.forEach((btn) => btn.addEventListener('click', () => {
+  addTeacherPopup.classList.add('visible');
+}));
+
+teachersImages.forEach((teacher) => teacher.addEventListener('click', () => {
+  teacherInfoPopup.classList.add('visible');
+}));
+
+addTeacherCloseBtn.addEventListener('click', () => {
+  addTeacherPopup.classList.remove('visible');
+});
+
+teacherInfoCloseBtn.addEventListener('click', () => {
+  teacherInfoPopup.classList.remove('visible');
 });

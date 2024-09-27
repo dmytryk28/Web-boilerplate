@@ -1,12 +1,12 @@
 import {UserFormatted} from './interfaces';
 
-type SortingField = 'full_name' | 'age' | 'b_day' | 'country';
-type Order = 'asc' | 'desc';
+type SortingField = 'full_name' | 'gender' | 'course' | 'age' | 'b_day' | 'country';
+export type Order = 'asc' | 'desc';
 
 export function sortUsers(users: UserFormatted[], field: SortingField, order: Order = 'asc'): UserFormatted[] {
     if (isStringField(field)) {
         return sortUsersByStringField(users, field, order);
-    } else if (field === 'age') {
+    } else if (isNumField(field)) {
         return sortUsersByNumField(users, field, order);
     } else {
         return sortUsersByDateField(users, field, order);
@@ -14,7 +14,11 @@ export function sortUsers(users: UserFormatted[], field: SortingField, order: Or
 }
 
 function isStringField(field: string): boolean {
-    return field === 'full_name' || field === 'country';
+    return field === 'full_name' || field === 'country' || field === 'course' || field === 'gender';
+}
+
+function isNumField(field: string): boolean {
+    return field === 'age';
 }
 
 function sortUsersByStringField(users: UserFormatted[], field: SortingField, order: Order = 'asc'): UserFormatted[] {
@@ -37,6 +41,6 @@ function sortUsersByDateField(users: UserFormatted[], field: SortingField, order
     return users.sort((a, b) => {
         const fieldA = new Date(a[field] as string);
         const fieldB = new Date(b[field] as string);
-        return order === 'asc' ? fieldA.getTime() - fieldB.getTime() : fieldB.getTime() - fieldA.getTime();
+        return order === 'asc' ? fieldB.getTime() - fieldA.getTime() : fieldA.getTime() - fieldB.getTime();
     });
 }
