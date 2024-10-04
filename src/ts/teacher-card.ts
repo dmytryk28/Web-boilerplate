@@ -1,5 +1,4 @@
 import {UserFormatted} from "./users-processing/interfaces";
-import {validatedUsers} from "./users";
 
 export function formatCard(user: UserFormatted) {
     return `
@@ -38,8 +37,4 @@ function getImage(user: UserFormatted) {
 function getInitials(fullName: string) {
     const parts = fullName.split(' ');
     return `${parts[0].charAt(0).toLocaleUpperCase()}.${parts[1].charAt(0).toLocaleUpperCase()}.`;
-}
-
-export function findById(id: string) {
-    return validatedUsers.find(user => user.id === id);
 }

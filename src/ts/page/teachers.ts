@@ -1,24 +1,27 @@
-import {findById, formatShortCard, formatCard} from "./teacher-card";
-import {UserFormatted} from "./users-processing/interfaces";
-import {validatedUsers} from "./users";
-import {clearFilters} from "./task2";
-import {addTeachersInTable} from "./task3";
+import {formatShortCard, formatCard} from "../teacher-card";
+import {UserFormatted} from "../users-processing/interfaces";
+import {clearFilters} from "./filtering";
+import {addTeachersInTable} from "./sorting";
+import {addPagination} from "./pagination";
+import {appData} from "../app-data";
 
 const teacherInfoCloseBtn = document.querySelector<HTMLElement>('#info-close-btn');
-export const teacherInfoPopup = document.querySelector<HTMLDialogElement>('#teacher-info');
+const teacherInfoPopup = document.querySelector<HTMLDialogElement>('#teacher-info');
 const teacherGrid = document.querySelector('.all-teachers') as HTMLElement;
 const scrollContainer = document.querySelector('.scroll') as HTMLElement;
 const leftBtn = document.querySelector('.scroll-btn.left') as HTMLElement;
 const rightBtn = document.querySelector('.scroll-btn.right') as HTMLElement;
 const favoriteBtn = document.querySelector(".favorite-btn") as HTMLElement;
+const teacherScroll = document.querySelector('.scroll');
+
 
 favoriteBtn.addEventListener('click', event => {
     const teacherInfoElem = (event.target as HTMLElement).closest<HTMLElement>('.main-teacher-info');
     const userID = teacherInfoElem.getAttribute('data-user-id');
-    const user = findById(userID);
+    const user = appData.getTeacherById(userID);
     user.favorite = !user.favorite;
     favoriteBtn.innerText = favoriteBtn.innerText === '☆' ? '★' : '☆';
-    addTeachersOnPage(validatedUsers);
+    addTeachersOnPage();
     clearFilters();
 });
 
@@ -39,42 +42,48 @@ rightBtn.addEventListener('click', () => {
     else scrollCards(282);
 });
 
-
-export function addTeachersOnPage(teachers: UserFormatted[]) {
-    addTeachersOnGrid(teachers);
-    addFavTeachersOnScroll(teachers);
-    addTeachersInTable(teachers);
+export function addTeachersOnPage() {
+    addTeachersOnGrid();
+    addFavTeachersOnScroll();
+    addTeachersInTable();
+    addPagination();
 }
 
-export function addTeachersOnGrid(teachers: UserFormatted[]) {
+export function addTeachersOnGrid() {
     let html = '';
-    teachers.forEach(user => {
+    appData.getDisplayedTeachers().forEach(user => {
         html += formatCard(user);
     })
     teacherGrid.innerHTML = html;
 }
 
-function addFavTeachersOnScroll(teachers: UserFormatted[]) {
+function addFavTeachersOnScroll() {
     let html = '';
-    teachers.filter(user => user.favorite)
+    appData.getDisplayedTeachers().filter(user => user.favorite)
         .forEach(user => {
             html += formatShortCard(user);
         })
-    scrollContainer.innerHTML = html;
+    teacherScroll.innerHTML = html;
 }
 
 function addShowPopupEvent(element: Element) {
     element.addEventListener('click', event => {
         const card = (event.target as HTMLElement).closest('.card');
         if (!card) return;
-
         const userID = card.getAttribute('data-user-id');
-        updateTeacherInfoPopup(findById(userID));
+        updateTeacherInfoPopup(appData.getTeacherById(userID));
         teacherInfoPopup.showModal();
     });
 }
 
-export function updateTeacherInfoPopup(user: UserFormatted) {
+addShowPopupEvent(teacherGrid);
+addShowPopupEvent(teacherScroll);
+
+teacherInfoCloseBtn.addEventListener('click', () => {
+    teacherInfoPopup.close();
+});
+
+function updateTeacherInfoPopup(user: UserFormatted) {
     const teacherInfoElem = document.querySelector<HTMLElement>('.main-teacher-info');
     teacherInfoElem.setAttribute('data-user-id', user.id);
 
@@ -98,11 +107,4 @@ function updateElementText(element: Element | undefined, text: string) {
         (element as HTMLElement).innerText = text;
     }
 }
-
-addShowPopupEvent(teacherGrid);
-addShowPopupEvent(scrollContainer);
-
-teacherInfoCloseBtn.addEventListener('click', () => {
-    teacherInfoPopup.close();
-});
 

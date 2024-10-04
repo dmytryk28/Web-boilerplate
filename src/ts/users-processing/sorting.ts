@@ -1,4 +1,4 @@
-import {UserFormatted} from './interfaces';
+import {UserFormatted} from "./interfaces";
 
 type SortingField = 'full_name' | 'gender' | 'course' | 'age' | 'b_day' | 'country';
 export type Order = 'asc' | 'desc';

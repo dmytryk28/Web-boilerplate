@@ -48,6 +48,7 @@ body {
 }
 
 .main-btn {
+  font-size: 1.5rem;
   color: var(--orange);
   background-color: white;
   border: 1px solid var(--orange);
