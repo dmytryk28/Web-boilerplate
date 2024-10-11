@@ -1,7 +1,6 @@
-import {UserFormatted, Gender, FilterParams} from './interfaces';
-import {getPredicateFunc} from "./search";
-
-
+import { UserFormatted, FilterParams } from './interfaces';
+import { getPredicateFunc } from "./search";
+import _ from 'lodash';
 
 const regions: { [key: string]: string[] } = {
     'Europe': [
@@ -17,30 +16,28 @@ const regions: { [key: string]: string[] } = {
 };
 
 export function filterUsers(users: UserFormatted[], filters: FilterParams): UserFormatted[] {
-    return users.filter(user => applyFilters(user, filters));
+    return _.filter(users, (user) => applyFilters(user, filters));
 }
 
 function applyFilters(user: UserFormatted, filters: FilterParams): boolean {
-    return Object.keys(filters).every(key => {
-        if (key === 'age' && filters.age !== undefined) {
-            return applyAgeFilter(user.age, filters.age);
+    return _.every(filters, (value, key) => {
+        if (key === 'age' && value !== undefined) {
+            return applyAgeFilter(user.age, value as number | string);
         }
-        if (key === 'withPhoto' && filters.withPhoto !== undefined) {
-            return user.picture_large !== undefined && user.picture_large !== null;
+        if (key === 'withPhoto' && value !== undefined) {
+            return !_.isNil(user.picture_large);
         }
         if (key === 'region' && user.country !== undefined) {
-            return regions[filters.region].includes(user.country);
+            return _.includes(regions[filters.region], user.country);
         }
-        return user[key] === filters[key];
+        return _.get(user, key) === value;
     });
 }
 
 function applyAgeFilter(userAge: number | undefined, ageFilter: number | string): boolean {
-    if (typeof ageFilter === 'number') {
+    if (_.isNumber(ageFilter)) {
         return userAge === ageFilter;
     }
-    const parts = ageFilter.split('-');
-    const lower = Number(parts[0]);
-    const upper = Number(parts[1]);
+    const [lower, upper] = _.split(ageFilter, '-').map(Number);
     return userAge >= lower && userAge <= upper;
 }

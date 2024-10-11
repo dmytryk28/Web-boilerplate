@@ -9,8 +9,6 @@ export let validatedUsers = validateUsers(mergedUsers);
 const baseUrl = 'https://randomuser.me/api/';
 const jsonServerUrl = "http://localhost:3000/teachers"
 
-// const fetchedUsers = await fetchUsers();
-// console.log(fetchedUsers);
 
 export async function fetchTeachers(num: number) {
     try {

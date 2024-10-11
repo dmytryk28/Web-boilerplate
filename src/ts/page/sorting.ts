@@ -13,7 +13,7 @@ let sortColumn = null;
 const map = {
     'Name': 'full_name',
     'Specialty': 'course',
-    'Age': 'b_day',
+    'Age': 'age',
     'Gender': 'gender',
     'Nationality': 'country'
 };
@@ -28,7 +28,6 @@ tableHeader.addEventListener('click', event => {
        sortColumn = map[column.innerText];
        direction = 'asc';
    }
-
    column.classList.add('sorted-' + direction);
    appData.setDisplayedTeachers(sortUsers(appData.getDisplayedTeachers(), sortColumn, direction));
    addTeachersInTable();
