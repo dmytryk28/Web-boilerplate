@@ -41,15 +41,17 @@
   color: black;
 }
 
-.short-info h1::after {
-  content: '★';
-  color: #ecec02;
+.favorite-btn {
   position: absolute;
-  font-size: 4rem;
-  font-weight: bolder;
   top: 0;
   right: 0;
-  transform: translateY(-20%);
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--yellow);
+  font-size: 3.5rem;
+  line-height: 2rem;
 }
 
 .short-info h2 {
@@ -82,7 +84,11 @@
 .map-toggle span {
   position: relative;
   color: darkcyan;
-  cursor: pointer;
+  cursor: pointer;border: none;
+  background: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+  font-size: inherit;
 }
 
 .map-toggle span::after {
@@ -191,4 +197,26 @@
   .map-toggle span {
     font-size: 0.8rem;
   }
+
+  .favorite-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    color: var(--yellow);
+    font-size: 2.5rem;
+    line-height: 1rem;
+  }
+}
+
+#location-map {
+  height: 300px;;
+  margin-top: 20px;
+}
+
+.display-none {
+  display: none;
 }

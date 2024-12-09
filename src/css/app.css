@@ -27,6 +27,7 @@
   --orange: #f85e60;
   --light-orange: #f79686;
   --light-gray: #aaacb7;
+  --yellow: #ecec02;
 }
 
 body {
@@ -47,6 +48,7 @@ body {
 }
 
 .main-btn {
+  font-size: 1.5rem;
   color: var(--orange);
   background-color: white;
   border: 1px solid var(--orange);

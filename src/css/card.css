@@ -4,6 +4,15 @@
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
+  position: relative;
+}
+
+.stared {
+  position: absolute;
+  top: 0;
+  right: -5%;
+  font-size: 3rem;
+  color: var(--yellow);
 }
 
 .card .teacher-image img {
@@ -82,15 +91,6 @@
   transition: transform 0.3s ease-in-out;
 }
 
-.star::after {
-  content: '★';
-  color: #ecec02;
-  position: absolute;
-  font-size: 3rem;
-  font-weight: bolder;
-  transform: translateX(310%) translateY(-15%);
-}
-
 @media (max-width: 600px) {
   .card {
     width: 250px;
@@ -105,15 +105,11 @@
     padding: 0 1rem;
   }
 
-  .star::after {
-    transform: translateX(450%);
-  }
-
-  .card .teacher-image img {
-    transform: scale(1.9);
-  }
-
-  .card .teacher-image img:hover {
-    transform: scale(2.2);
+  .stared {
+    position: absolute;
+    top: 0;
+    right: -1%;
+    font-size: 4rem;
+    color: var(--yellow);
   }
 }

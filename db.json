@@ -1,0 +1,64 @@
+{
+  "teachers": [
+    {
+      "id": "J72Y33434LZRV",
+      "full_name": "John Doe",
+      "course": "Mathematics",
+      "country": "Ukraine",
+      "city": "Kyiv",
+      "email": "n@ukma.edu.ua",
+      "phone": "0933333333",
+      "b_day": "2009-01-06",
+      "gender": "Male",
+      "bg_color": "#8d3030",
+      "note": "qwqw",
+      "age": 15,
+      "favorite": false
+    },
+    {
+      "id": "JQC3FSQCKIJOI",
+      "full_name": "John Doe",
+      "course": "Mathematics",
+      "country": "Ukraine",
+      "city": "Kyiv",
+      "email": "gosling@ukma.edu.ua",
+      "phone": "0933333333",
+      "b_day": "2006-09-27",
+      "gender": "Male",
+      "bg_color": "#1ff0ff",
+      "note": "qqq",
+      "age": 18,
+      "favorite": false
+    },
+    {
+      "id": "2XBGZH0Q16XRD",
+      "full_name": "John Doe",
+      "course": "Mathematics",
+      "country": "Ukraine",
+      "city": "Kyiv",
+      "email": "gosling@ukma.edu.ua",
+      "phone": "0933333333",
+      "b_day": "2006-09-27",
+      "gender": "Male",
+      "bg_color": "#db8a8a",
+      "note": "qq",
+      "age": 18,
+      "favorite": false
+    },
+    {
+      "id": "0KVPNK8ZBQWGF",
+      "full_name": "John Doe",
+      "course": "Mathematics",
+      "country": "Ukraine",
+      "city": "Kyiv",
+      "email": "gosling@ukma.edu.ua",
+      "phone": "0933333333",
+      "b_day": "2006-09-28",
+      "gender": "Male",
+      "bg_color": "#000000",
+      "note": "ww",
+      "age": 18,
+      "favorite": false
+    }
+  ]
+}

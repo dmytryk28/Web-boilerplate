@@ -60,7 +60,6 @@
   margin-bottom: 1rem;
 }
 
-
 @media (max-width: 1600px) {
   .all-teachers {
     grid-template-columns: repeat(4, 1fr);
