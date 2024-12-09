@@ -1,9 +1,9 @@
-import {filterUsers} from "./users-processing/filtering";
-import {addTeachersOnGrid} from "./task1";
-import {validatedUsers} from "./users";
-import {clearSearchInput} from "./task4";
-import {addTeachersInTable} from "./task3";
-import {FilterParams} from "./users-processing/interfaces";
+import {filterUsers} from "../users-processing/filtering";
+import {addTeachersOnPage} from "./teachers";
+import {clearSearchInput} from "./search";
+import {clearSorting} from "./sorting";
+import {FilterParams} from "../users-processing/interfaces";
+import {appData} from "../app-data";
 
 const age = document.querySelector<HTMLSelectElement>('#age');
 const region = document.querySelector<HTMLSelectElement>('#region');
@@ -27,16 +27,19 @@ function addSelectFilterEvent(element: HTMLSelectElement | HTMLInputElement, fie
         if (element instanceof HTMLSelectElement) {
             filters[field] = element.options[element.selectedIndex].text;
         } else {
-            if (element.checked) filters[field] = element.checked;
-            else delete filters[field];
+            if (element.checked) {
+                filters[field] = true;
+            } else {
+                delete filters[field];
+            }
         }
         if (filters[field] === '') {
             delete filters[field];
         }
         clearSearchInput();
-        const filteredUsers = filterUsers(validatedUsers, filters);
-        addTeachersOnGrid(filteredUsers);
-        addTeachersInTable(filteredUsers);
+        clearSorting();
+        appData.setDisplayedTeachers(filterUsers(appData.getTeachers(), filters));
+        addTeachersOnPage();
     });
 }
 
