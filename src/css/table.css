@@ -7,7 +7,7 @@
 th {
   position: relative;
   color: #797982;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid grey;
   padding: 1rem;
 }
 
@@ -23,7 +23,7 @@ th::before {
   bottom: 0;
   width: 100%;
   height: 1px;
-  background-color: gray;
+  background-color: grey;
 }
 
 th:hover::before {
@@ -112,4 +112,38 @@ td:first-child {
   td {
     padding: 0.2rem;
   }
+}
+
+#charts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  width: 35vw;
+  height: fit-content;
+  position: relative;
+}
+
+.carousel-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+#prev-slide, #next-slide {
+  margin: 2vh 0.5vh 7vh;
+  padding: 5px 10px;
+  cursor: pointer;
 }

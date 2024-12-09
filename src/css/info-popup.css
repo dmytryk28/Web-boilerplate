@@ -84,7 +84,11 @@
 .map-toggle span {
   position: relative;
   color: darkcyan;
-  cursor: pointer;
+  cursor: pointer;border: none;
+  background: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+  font-size: inherit;
 }
 
 .map-toggle span::after {
@@ -206,4 +210,13 @@
     font-size: 2.5rem;
     line-height: 1rem;
   }
+}
+
+#location-map {
+  height: 300px;;
+  margin-top: 20px;
+}
+
+.display-none {
+  display: none;
 }
