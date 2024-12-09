@@ -25,9 +25,13 @@ function addMissingFields(user: any): UserFormatted {
         id: user.id || generateId(13),
         favorite: user.favorite || false,
         course: user.course || getRandomCourse(),
-        bg_color: user.bg_color || "#ffffff",
-        note: user.note || "Note",
+        bg_color: user.bg_color || getRandomColorHex(),
+        note: user.note || "Note...",
     };
+}
+
+function getRandomColorHex(): string {
+    return "#" + Math.floor(Math.random() * 16777215).toString(16);
 }
 
 function formatUser(user: any): Partial<UserFormatted> {
@@ -46,6 +50,7 @@ function formatUser(user: any): Partial<UserFormatted> {
         age: user.dob.age,
         phone: user.phone,
         picture_large: user.picture.large,
-        picture_thumbnail: user.picture.thumbnail
+        picture_thumbnail: user.picture.thumbnail,
+        favorite: user.favorite || false
     };
 }

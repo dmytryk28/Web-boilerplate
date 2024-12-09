@@ -1,5 +1,5 @@
 import {UserFormatted} from './interfaces';
-import { getCountryCode } from 'countries-list'
+import {getCountryCode} from 'countries-list'
 import {CountryCode, isValidPhoneNumber} from "libphonenumber-js";
 
 export function validateUsers(users: UserFormatted[]) {
@@ -22,7 +22,7 @@ function validateUser(user: UserFormatted): boolean {
 }
 
 function validateStringField(field: any): boolean {
-    return typeof field === 'string' && field[0] === field[0].toUpperCase();
+    return typeof field === 'string' && field[0] === field[0].toLocaleUpperCase();
 }
 
 function validateNumField(field: any): boolean {
@@ -32,8 +32,9 @@ function validateNumField(field: any): boolean {
 function validatePhoneNum(phoneNum: any, country: any): boolean {
     if (typeof phoneNum === 'string' && typeof country === 'string') {
         const countryCode = getCountryCode(country);
-        // console.log(countryCode);
-        // console.log(phoneNum + " " + isValidPhoneNumber(phoneNum, countryCode as CountryCode))
+        if (!countryCode) {
+            return false;
+        }
         return isValidPhoneNumber(phoneNum, countryCode as CountryCode);
     }
     return false;

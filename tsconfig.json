@@ -1,16 +1,23 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "module": "CommonJS",
+    "module": "ES6",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES6",
+    "sourceMap": true,
     "outDir": "./build/js",
-    "rootDir": "./src",
-    "allowJs": true,
-    "noImplicitAny": false,
-    "strict": true,
-    "esModuleInterop": true,
+    "incremental": true,
+    "useDefineForClassFields": true,
+    "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "sourceMap": true
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "composite": true,
+    "lib": ["DOM", "ES6", "DOM.Iterable", "ScriptHost", "ES2016.Array.Include"],
   },
-  "include": ["src/js/**/*", ".eslintrc.cjs", "src/global.d.ts"],
-  "exclude": ["node_modules"]
+  "include": ["./src/**/*", ".eslintrc.cjs"],
+  "exclude": ["./node_modules", "test", "./build/js"]
 }

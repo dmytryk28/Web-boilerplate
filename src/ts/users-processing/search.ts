@@ -18,7 +18,7 @@ export function findUsers(users: UserFormatted[], param: string): UserFormatted[
     );
 }
 
-function getPredicateFunc(operator: string): (a: number, b: number) => boolean {
+export function getPredicateFunc(operator: string): (a: number, b: number) => boolean {
     switch (operator) {
         case '>':
             return (a, b) => a > b;
@@ -36,7 +36,7 @@ function getPredicateFunc(operator: string): (a: number, b: number) => boolean {
 }
 
 function findByAgeBound(users: UserFormatted[], match: string[]) {
-    const [operator, num] = match;
+    const [_, operator, num] = match;
     const predicateFunc = getPredicateFunc(operator);
     return users.filter(user => predicateFunc(user.age ?? 0, Number(num)));
 }
